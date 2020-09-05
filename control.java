@@ -45,7 +45,7 @@ public class control {
             try {
                 //first we read the line index for temperature file
                 FileReader lineFr = new FileReader
-                (new File("C:\\Users\\Prof.Hamdy F.M\\Documents\\NetBeansProjects\\JavaApplication-1\\lineNumber.txt"));
+                (new File("C:\\lineNumber.txt"));
                 
                 BufferedReader lineBr = new BufferedReader (lineFr);          
                 
@@ -54,7 +54,7 @@ public class control {
 
                 //then we read the exact value of temperature from temperature file
                 FileReader tempFr = new FileReader
-                (new File("C:\\Users\\Prof.Hamdy F.M\\Documents\\NetBeansProjects\\JavaApplication-1\\temperature.txt"));
+                (new File("C:\\temperature.txt"));
                 
                 BufferedReader tempBr = new BufferedReader (tempFr);
                 
@@ -74,7 +74,7 @@ public class control {
                 
                 // save the new index of temperature line number
                 FileWriter lineWr = new FileWriter
-                (new File("C:\\Users\\Prof.Hamdy F.M\\Documents\\NetBeansProjects\\JavaApplication-1\\lineNumber.txt"));        
+                (new File("C:\\lineNumber.txt"));        
                 BufferedWriter lineBw = new BufferedWriter(lineWr);        
                 int w = lineNumber+1;                
                 lineBw.write(""+w);        
@@ -91,7 +91,7 @@ public class control {
 
                 //reading from the port
                 FileReader commFr = new FileReader
-                (new File("C:\\Users\\Prof.Hamdy F.M\\Documents\\NetBeansProjects\\JavaApplication-1\\readComm.txt"));
+                (new File("C:\\readComm.txt"));
                 BufferedReader commBr = new BufferedReader (commFr);
                 String s = commBr.readLine();
                 byte[] b2 = s.getBytes();
@@ -100,13 +100,14 @@ public class control {
                 InputStream in = port.getInputStream();
                 
                  FileWriter infoWr = new FileWriter
-                (new File("C:\\Users\\Prof.Hamdy F.M\\Documents\\NetBeansProjects\\JavaApplication-1\\info.txt"), true);        
+                (new File("C:\\info.txt"), true);        
                 BufferedWriter infoBw = new BufferedWriter(infoWr);        
                  
                 LocalDate date = LocalDate.now();
                 LocalTime time = LocalTime.now();
                
                 int c=0;
+                int n1, n2, n3, n4, num, num2;
                 port.closePort();
                 while (c < 5){
                     Thread.sleep(60000);
@@ -118,12 +119,13 @@ public class control {
                     }
                     String number = back.substring(17);
                     System.out.println("back :  "+back+"\n");                                   
-                    int n1 = Integer.parseInt(number.substring(0, 2));
-                    int n2 = Integer.parseInt(number.substring(2, 4));
-                    int n3 = Integer.parseInt(number.substring(4, 6));
-                    int n4 = Integer.parseInt(number.substring(6, 8));
-                    int num = Integer.parseInt(String.valueOf(Character.toChars(n1))+String.valueOf(Character.toChars(n2))+String.valueOf(Character.toChars(n3))+String.valueOf(Character.toChars(n4)));
-                    int num2 = Integer.parseInt(String.valueOf(Character.toChars(n1))+String.valueOf(Character.toChars(n2)));
+                    n1 = Integer.parseInt(number.substring(0, 2));
+                    n2 = Integer.parseInt(number.substring(2, 4));
+                    n3 = Integer.parseInt(number.substring(4, 6));
+                    n4 = Integer.parseInt(number.substring(6, 8));
+                    num = Integer.parseInt(String.valueOf(Character.toChars(n1))+String.valueOf(Character.toChars(n2))+
+                                               String.valueOf(Character.toChars(n3))+String.valueOf(Character.toChars(n4)));
+                    num2 = Integer.parseInt(String.valueOf(Character.toChars(n1))+String.valueOf(Character.toChars(n2)));
 
                     Double d = new Double(num*0.01);
                     System.out.println("value of tenperature   "+d+" \n");
