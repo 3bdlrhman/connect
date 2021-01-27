@@ -1,9 +1,14 @@
 # connect
-this is a console java application 
-uses jSeialCom library to communicate with Temperature Controller
-read specific temperature value and send it as a commands to the Controller
-then it sends a commands to read from the Controller it's current value
-to make sure the value we send is fixed by now
-to do so i created a loop with a statement if the current temperature
-equals the value we send then update collision value by one
-once the collision is four there we make sure the value is fixed and we terminate the programe
+
+Console java application:
+------------------------
+This program i developed as my graduation project for my physics lab at Minya University.
+The program helped the researchers do their reseaches more efficiently and at less time
+
+Processing Steps:
+-----------------
+1- Uses jSeialCom library to communicate with Temperature Controller (through serial port).
+2- Read specific temperature value from local text file.
+3- Sends a commands contains this value specified. 
+4- Afetr a minute it sends another commmand to read from the Controller current value.
+5- Comparing the current value with the value we sent to assesst its permanent
